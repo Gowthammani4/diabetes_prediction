@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
 
   final myController = TextEditingController();
   var result = "";
-  List<double> a = [];
+  List<String> a = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
                     labelText: 'Number of Pregnancies eg. 0',
                   ),
                   validator: (value) {
-                    a.add(double.parse(value!));
+                    a.add(value!);
                   },
                 ),
                 TextFormField(
@@ -52,7 +52,7 @@ class _MyAppState extends State<MyApp> {
                     labelText: 'Number of Pregnancies eg. 0',
                   ),
                   validator: (value) {
-                    a.add(double.parse(value!));
+                    a.add(value!);
                   },
                 ),
                 TextFormField(
@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
                     labelText: 'Blood Pressure (mmHg) eg. 80',
                   ),
                   validator: (value) {
-                    a.add(double.parse(value!));
+                    a.add(value!);
                   },
                 ),
                 TextFormField(
@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
                     labelText: 'Skin Thickness (mm) eg. 20',
                   ),
                   validator: (value) {
-                    a.add(double.parse(value!));
+                    a.add(value!);
                   },
                 ),
                 TextFormField(
@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
                     labelText: 'Insulin Level (IU/mL) eg. 80',
                   ),
                   validator: (value) {
-                    a.add(double.parse(value!));
+                    a.add(value!);
                   },
                 ),
                 TextFormField(
@@ -96,7 +96,7 @@ class _MyAppState extends State<MyApp> {
                     labelText: 'Body Mass Index (kg/m²) eg. 23.1',
                   ),
                   validator: (value) {
-                    a.add(double.parse(value!));
+                    a.add(value!);
                   },
                 ),
                 TextFormField(
@@ -107,7 +107,7 @@ class _MyAppState extends State<MyApp> {
                     labelText: 'Diabetes Pedigree Function eg. 0.52',
                   ),
                   validator: (value) {
-                    a.add(double.parse(value!));
+                    a.add(value!);
                   },
                 ),
                 TextFormField(
@@ -118,7 +118,7 @@ class _MyAppState extends State<MyApp> {
                     labelText: 'Age (years) eg. 34',
                   ),
                   validator: (value) {
-                    a.add(double.parse(value!));
+                    a.add(value!);
                   },
                 ),
                 Container(
@@ -147,7 +147,7 @@ class _MyAppState extends State<MyApp> {
     });
 
     String url =
-        'https://diabetes-prediction-pmn1.onrender.com/predict?pregnancies=2&glucose=150&bloodpressure=89&skinthickness=20&insulin=90&bmi=25&dpf=0.4&age=50';
+        'https://diabetes-prediction-pmn1.onrender.com/predict?pregnancies=${a[0]}&glucose=${a[1]}&bloodpressure=${a[2]}&skinthickness=${a[3]}&insulin=${a[4]}&bmi=${a[5]}&dpf=${a[6]}&age=${a[7]}';
     var j = await http.get(Uri.parse(url));
     var json = j.body;
     print(json);
